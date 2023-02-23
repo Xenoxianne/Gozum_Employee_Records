@@ -38,53 +38,74 @@ namespace Employee_Records
 		private void add_Click(object sender, RoutedEventArgs e)
 		{
 			SqlConnection con = new SqlConnection("Data Source=Xenoxia\\SQLEXPRESS01;Initial Catalog=Employee-Record;Integrated Security=True");
-			string emp_name = TB_Name.Text, phone = TB_Phone.Text;
-			int emp_age = int.Parse(TB_Age.Text);
-			double emp_salary = double.Parse(TB_Salary.Text);
-			DateTime join_date = DateTime.Parse(TB_JoinDate.Text);
-			string FDateTime = join_date.ToString("yyyy-MM-dd HH:mm:ss");
+			try
+			{
+				string emp_name = TB_Name.Text, phone = TB_Phone.Text;
+				int emp_age = int.Parse(TB_Age.Text);
+				double emp_salary = double.Parse(TB_Salary.Text);
+				DateTime join_date = DateTime.Parse(TB_JoinDate.Text);
+				string FDateTime = join_date.ToString("yyyy-MM-dd HH:mm:ss");
 
-			SqlDataReader dr;
-			SqlCommand cmd = new SqlCommand("exec Insert_Info '" + emp_name + "','" + emp_age + "','" + emp_salary + "','" + FDateTime + "','" + phone + "'", con);
-			con.Open();
-			dr = cmd.ExecuteReader();
-			MessageBox.Show("Succesfully saved!");
-			con.Close();
-			GetEmpList();
+				SqlDataReader dr;
+				SqlCommand cmd = new SqlCommand("exec Insert_Info '" + emp_name + "','" + emp_age + "','" + emp_salary + "','" + FDateTime + "','" + phone + "'", con);
+				con.Open();
+				dr = cmd.ExecuteReader();
+				MessageBox.Show("Succesfully saved!", "Success");
+				con.Close();
+				GetEmpList();
+			}
+			catch
+			{
+				MessageBox.Show("Invalid Input", "Error");
+			}
 		}
 
 		// Update Employee Info
 		private void upd_Click(object sender, RoutedEventArgs e)
 		{
-			SqlConnection con = new SqlConnection("Data Source=Xenoxia\\SQLEXPRESS01;Initial Catalog=Employee-Record;Integrated Security=True");
-			string emp_name = TB_Name.Text, phone = TB_Phone.Text;
-			int emp_age = int.Parse(TB_Age.Text), id = int.Parse(TB_ID.Text);
-			double emp_salary = double.Parse(TB_Salary.Text);
-			DateTime join_date = DateTime.Parse(TB_JoinDate.Text);
-			string FDateTime = join_date.ToString("yyyy-MM-dd HH:mm:ss");
+			try
+			{
+				SqlConnection con = new SqlConnection("Data Source=Xenoxia\\SQLEXPRESS01;Initial Catalog=Employee-Record;Integrated Security=True");
+				string emp_name = TB_Name.Text, phone = TB_Phone.Text;
+				int emp_age = int.Parse(TB_Age.Text), id = int.Parse(TB_ID.Text);
+				double emp_salary = double.Parse(TB_Salary.Text);
+				DateTime join_date = DateTime.Parse(TB_JoinDate.Text);
+				string FDateTime = join_date.ToString("yyyy-MM-dd HH:mm:ss");
 
-			SqlDataReader dr;
-			SqlCommand cmd = new SqlCommand("exec Update_Info '" + id + "','" + emp_name + "','" + emp_age + "','" + emp_salary + "','" + FDateTime + "','" + phone + "'", con);
-			con.Open();
-			dr = cmd.ExecuteReader();
-			MessageBox.Show("Succesfully updated!");
-			con.Close();
-			GetEmpList();
+				SqlDataReader dr;
+				SqlCommand cmd = new SqlCommand("exec Update_Info '" + id + "','" + emp_name + "','" + emp_age + "','" + emp_salary + "','" + FDateTime + "','" + phone + "'", con);
+				con.Open();
+				dr = cmd.ExecuteReader();
+				MessageBox.Show("Succesfully updated!", "Success");
+				con.Close();
+				GetEmpList();
+			}
+			catch
+			{
+				MessageBox.Show("Invalid Input", "Error");
+			}
 		}
 
 		// Delete Employee Info
 		private void delete_click(object sender, RoutedEventArgs e)
 		{
-			SqlConnection con = new SqlConnection("Data Source=Xenoxia\\SQLEXPRESS01;Initial Catalog=Employee-Record;Integrated Security=True");
-			int id = int.Parse(TB_ID.Text);
+			try
+			{
+				SqlConnection con = new SqlConnection("Data Source=Xenoxia\\SQLEXPRESS01;Initial Catalog=Employee-Record;Integrated Security=True");
+				int id = int.Parse(TB_ID.Text);
 
-			SqlDataReader dr;
-			SqlCommand cmd = new SqlCommand("exec Delete_Info'" + id + "'", con);
-			con.Open();
-			dr = cmd.ExecuteReader();
-			MessageBox.Show("Succesfully deleted!");
-			con.Close();
-			GetEmpList();
+				SqlDataReader dr;
+				SqlCommand cmd = new SqlCommand("exec Delete_Info'" + id + "'", con);
+				con.Open();
+				dr = cmd.ExecuteReader();
+				MessageBox.Show("Succesfully deleted!", "Success");
+				con.Close();
+				GetEmpList();
+			}
+			catch
+			{
+				MessageBox.Show("Invalid Input", "Error");
+			}
 		}
 
 		// Upon opening form
