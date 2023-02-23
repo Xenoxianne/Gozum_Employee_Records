@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+	* Name: Denise Julianne S. Gozum
+	* Section: BSCS 3-1N
+	* Employee Records System using SQL database and WPF
+*/
+
+using System;
 using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
