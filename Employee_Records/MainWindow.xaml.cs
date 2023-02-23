@@ -92,6 +92,5 @@ namespace Employee_Records
 		{
 			GetEmpList();
 		}
-
 	}
 }
